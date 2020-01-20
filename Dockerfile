@@ -2,7 +2,7 @@ FROM centos:8
 
 MAINTAINER marek.haluska@gmail.com
 
-ARG PHPVER=7.2
+ARG PHPVER=7.3
 
 RUN set -x && \
     dnf -y module enable php:${PHPVER} && \
