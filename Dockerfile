@@ -1,20 +1,17 @@
-FROM centos:8
+FROM centos:7
 
 MAINTAINER marek.haluska@gmail.com
 
-ARG PHPVER=7.2
+ARG PHPVER=5.4
 
 RUN set -x && \
-    dnf -y module enable php:${PHPVER} && \
-    dnf -y install --exclude=nginx-filesystem --exclude=php-fpm \
+    yum -y install \
       httpd \
       php \
       php-bcmath \
       php-dba \
       php-gd \
-      php-gmp \
       php-intl \
-      php-json \
       php-ldap \
       php-mbstring \
       php-mysqlnd \
@@ -23,15 +20,15 @@ RUN set -x && \
       php-pear \
       php-pgsql \
       php-process \
+      php-pspell \
       php-recode \
       php-soap \
       php-xml \
       php-xmlrpc \
     && \
     rm -f /etc/httpd/conf.d/userdir.conf /etc/httpd/conf.d/welcome.conf && \
-    rm -f /etc/httpd/conf.modules.d/10-h2.conf /etc/httpd/conf.modules.d/10-proxy_h2.conf \
-      /etc/httpd/conf.modules.d/00-proxy.conf /etc/httpd/conf.modules.d/00-systemd.conf && \
-    dnf clean all && rm -rf /var/log/* && rm -rf /var/lib/dnf/* && rm -rf /var/cache/dnf/*
+    rm -f /etc/httpd/conf.modules.d/00-proxy.conf /etc/httpd/conf.modules.d/00-systemd.conf && \
+    yum clean all && rm -rf /var/log/* && rm -rf /var/lib/yum/* && rm -rf /var/cache/yum/*
 
 COPY rootfs/ /
 
