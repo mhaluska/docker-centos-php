@@ -19,14 +19,17 @@ RUN set -x && \
       php-mbstring \
       php-mysqlnd \
       php-odbc \
+      php-opcache \
       php-pdo \
       php-pear \
+      php-pecl-zip \
       php-pgsql \
       php-process \
       php-recode \
       php-soap \
       php-xml \
       php-xmlrpc \
+      ghostscript \
     && \
     rm -f /etc/httpd/conf.d/userdir.conf /etc/httpd/conf.d/welcome.conf && \
     rm -f /etc/httpd/conf.modules.d/10-h2.conf /etc/httpd/conf.modules.d/10-proxy_h2.conf \
