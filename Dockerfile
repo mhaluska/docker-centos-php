@@ -29,6 +29,7 @@ RUN set -x && \
       php-soap \
       php-xml \
       php-xmlrpc \
+      ghostscript \
     && \
     rm -f /etc/httpd/conf.d/userdir.conf /etc/httpd/conf.d/welcome.conf && \
     rm -f /etc/httpd/conf.modules.d/10-h2.conf /etc/httpd/conf.modules.d/10-proxy_h2.conf \
