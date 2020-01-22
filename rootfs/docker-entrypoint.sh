@@ -42,6 +42,16 @@ sed -i -e "s/\(;\)\?\(error_log\s\?=\)\(.*\)\?/\2 \/dev\/stderr/" $PHP_INI
 if [ "$PHP_DISABLE_USERINI" = "1" ]; then
 	sed -i -e "s/\(;\)\?\(user_ini.filename\s\?=\)$/\2/" $PHP_INI
 fi
+# Set apache module limits
+cat <<EOF > /etc/httpd/conf.d/php_limit.conf
+php_admin_value post_max_size $PHP_POSTMAX
+php_admin_value upload_max_filesize $PHP_UPLOADMAX
+php_admin_value max_execution_time $PHP_EXECMAX
+php_admin_value max_input_time $PHP_INPUTMAX
+php_admin_value memory_limit $PHP_MEMLIMIT
+php_admin_flag allow_url_fopen $PHP_URLFOPEN
+EOF
+
 # Zend OPcache
 OPCACHE_MEM="${OPCACHE_MEM:-64}"
 OPCACHE_INI="/etc/php.d/10-opcache.ini"
