@@ -11,11 +11,15 @@ if [ ! -z ${USER_GID+x} ]; then
 	groupmod -g $USER_GID apache
 fi
 
+## Set container timezone
+TZ="${TZ:-Europe/Prague}"
+ln -sf /usr/share/zoneinfo/$TZ /etc/localtime
+
 ## PHP configucation update
 echo "Updating php configuration..."
 # Variables to allow adhoc change using docker env
 PHP_INI="/etc/php.ini"
-PHP_TZ="${PHP_TZ:-Europe/Prague}"
+PHP_TZ="$TZ"
 PHP_POSTMAX="${PHP_POSTMAX:-10M}"
 PHP_UPLOADMAX="${PHP_UPLOADMAX:-8M}"
 PHP_URLFOPEN="${PHP_URLFOPEN:-Off}"
