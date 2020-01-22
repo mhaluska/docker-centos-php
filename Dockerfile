@@ -5,6 +5,7 @@ MAINTAINER marek.haluska@gmail.com
 ARG PHPVER=5.4
 
 RUN set -x && \
+    yum -y install epel-release && \
     yum -y install \
       httpd \
       php \
@@ -25,6 +26,9 @@ RUN set -x && \
       php-soap \
       php-xml \
       php-xmlrpc \
+      ghostscript \
+      php-pecl-zendopcache \
+      php-pclzip \
     && \
     rm -f /etc/httpd/conf.d/userdir.conf /etc/httpd/conf.d/welcome.conf && \
     rm -f /etc/httpd/conf.modules.d/00-proxy.conf /etc/httpd/conf.modules.d/00-systemd.conf && \
