@@ -22,7 +22,6 @@ RUN set -x && \
       php-opcache \
       php-pdo \
       php-pear \
-      php-pecl-zip \
       php-pgsql \
       php-process \
       php-recode \
