@@ -2,7 +2,7 @@ FROM centos:8
 
 MAINTAINER marek.haluska@gmail.com
 
-ARG PHPVER=7.3
+ARG PHPVER=7.4
 
 RUN set -x && \
     dnf -y module enable php:${PHPVER} && \
@@ -24,7 +24,6 @@ RUN set -x && \
       php-pear \
       php-pgsql \
       php-process \
-      php-recode \
       php-soap \
       php-xml \
       php-xmlrpc \
